@@ -31,6 +31,9 @@ func (v *StringVal) TransformRune(pos int) {
 	str := v.GetValueAsRuneSlice()
 	// upper case all the third character of the string
 	if positionTracker == v.Pos {
+		if !unicode.IsLetter(str[pos]) {
+			return
+		}
 		str[pos] = unicode.ToUpper(str[pos])
 		positionTracker = 1
 	} else {

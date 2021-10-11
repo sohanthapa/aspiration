@@ -36,6 +36,9 @@ func CapitalizeEveryThirdAlphanumericChar(s string) string {
 	for i := range r {
 		// upper case all the third character of the string
 		if tracker == 3 {
+			if !unicode.IsLetter(r[i]) {
+				continue
+			}
 			r[i] = unicode.ToUpper(r[i])
 			tracker = 1
 		} else {
